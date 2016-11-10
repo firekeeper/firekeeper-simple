@@ -1,0 +1,19 @@
+{
+  "name": "firekeeper-simple",
+  "version": "0.0.1",
+  "description": "firekeeper gulp 简洁版",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firekeeper/firekeeper-simple.git"
+  },
+  "author": "刘家尧",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/firekeeper/firekeeper-simple/issues"
+  },
+  "homepage": "https://github.com/firekeeper/firekeeper-simple#readme"
+}
