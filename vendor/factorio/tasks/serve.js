@@ -6,12 +6,7 @@ const gulp = require('gulp'),
 
 module.exports = (options) => {
     gulp.task('serve', () => {
-        const {
-            dir
-        } = options
-
-        const files = [`${dir.release}/**/*`]
-
+        const files = [`${options.release}/**/*`]
         browserSync.init(files, {
             open: false,
             // 设置是否启用网络环境
@@ -27,11 +22,11 @@ module.exports = (options) => {
             // 设置是否输出文件变动信息
             logFileChanges: false,
             server: {
-                baseDir: dir.release
+                baseDir: options.release
             },
             middleware: [
                 // 实现浏览器展示文件目录
-                serveIndex(dir.release, {
+                serveIndex(options.release, {
                     icons: true
                 }),
                 // 输出连接信息

@@ -1,9 +1,11 @@
 const gulp = require('gulp')
 
 module.exports = (root) => {
+    // 开发目录
     const dev = `${root}/app`
+    // 发布目录
     const release = `${root}/release`
-
+    // 配置
     const options = {
         dev: dev,
         root: root,
@@ -40,12 +42,18 @@ module.exports = (root) => {
             html5: true
         }
     }
-
-    gulp.task('default', () => {
-    })
+    // 默认任务
+    require('./tasks/default')(options)
+    // 监听文件变化
+    require('./tasks/watch')(options)
+    // 清理发布目录
+    require('./tasks/clean')(options)
+    // 打包文件
+    require('./tasks/release')(options)
 
     // 静态服务器
     require('./tasks/serve')(options)
+
     // 处理 html 文件
     require('./tasks/html')(options)
     // 处理 pug 文件
