@@ -6,6 +6,7 @@ module.exports = () => {
         'watch:pug',
         'watch:css',
         'watch:less',
-        'watch:sass'
+        'watch:sass',
+        'watch:babel'
     ])
 }

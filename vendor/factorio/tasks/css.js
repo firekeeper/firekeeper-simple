@@ -14,7 +14,7 @@ module.exports = (options) => {
             .pipe(plumber())
             .pipe(logger({
                 dest: options.css.release,
-                extname: options.css.extname,
+                extname: '.css',
                 showChange: true
             }))
             .pipe(sourcemaps.init())

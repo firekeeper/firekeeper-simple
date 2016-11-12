@@ -14,36 +14,37 @@ module.exports = (root) => {
             dir: `${dev}/view`,
             files: `${dev}/view/**/*.html`,
             globs: [`${dev}/view/**/*.html`, `!${dev}/view/**/_*.html`],
-            release: `${release}/view`,
-            extname: '.html'
+            release: `${release}/view`
         },
         pug: {
             dir: `${dev}/view`,
             files: `${dev}/view/**/*.pug`,
             globs: [`${dev}/view/**/*.pug`, `!${dev}/view/**/_*.html`],
-            release: `${release}/view`,
-            extname: '.pug'
+            release: `${release}/view`
         },
         css: {
             dir: `${resource}/style`,
             files: `${resource}/style/**/*.css`,
             globs: [`${resource}/style/**/*.css`, `!${resource}/style/**/_*.css`],
-            release: `${release}/resource/style`,
-            extname: '.css'
+            release: `${release}/resource/style`
         },
         less: {
             dir: `${resource}/style`,
             files: `${resource}/style/**/*.less`,
             globs: [`${resource}/style/**/*.less`, `!${resource}/style/**/_*.less`],
-            release: `${release}/resource/style`,
-            extname: '.less'
+            release: `${release}/resource/style`
         },
         sass: {
             dir: `${resource}/style`,
             files: `${resource}/style/**/*.{sass,scss}`,
             globs: `${resource}/style/**/*.{sass,scss}`,
-            release: `${release}/resource/style`,
-            extname: '.{sass,scss}'
+            release: `${release}/resource/style`
+        },
+        babel: {
+            dir: `${resource}/script`,
+            files: `${resource}/script/**/*.es6.js`,
+            globs: [`${resource}/script/**/*.es6.js`, `!${resource}/script/**/_*.es6.js`],
+            release: `${release}/resource/script`
         },
         htmlBeautify: {
             // 设置缩进宽度
@@ -87,4 +88,6 @@ module.exports = (root) => {
     require('./tasks/less')(options)
     // 处理 sass 文件
     require('./tasks/sass')(options)
+    // 处理 js (babel es6)
+    require('./tasks/babel')(options)
 }

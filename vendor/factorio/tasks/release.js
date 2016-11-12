@@ -7,7 +7,8 @@ module.exports = () => {
             'pug',
             'css',
             'less',
-            'sass'
+            'sass',
+            'babel'
         ])
     })
 }

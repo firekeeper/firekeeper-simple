@@ -14,7 +14,7 @@ module.exports = (options) => {
             .pipe(plumber())
             .pipe(logger({
                 dest: `${options.release}/view`,
-                extname: '.pug',
+                extname: '.html',
                 showChange: true
             }))
             .pipe(pug())
