@@ -8,6 +8,7 @@ module.exports = () => {
             'css',
             'less',
             'sass',
+            'javascript',
             'babel'
         ])
     })

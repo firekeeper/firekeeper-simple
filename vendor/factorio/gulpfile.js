@@ -40,6 +40,12 @@ module.exports = (root) => {
             globs: `${resource}/style/**/*.{sass,scss}`,
             release: `${release}/resource/style`
         },
+        javascript: {
+            dir: `${resource}/script`,
+            files: `${resource}/script/**/*.js`,
+            globs: [`${resource}/script/**/*.js`, `!${resource}/script/**/_*.js`, `!${resource}/script/**/*.es6.js`],
+            release: `${release}/resource/script`
+        },
         babel: {
             dir: `${resource}/script`,
             files: `${resource}/script/**/*.es6.js`,
@@ -88,6 +94,8 @@ module.exports = (root) => {
     require('./tasks/less')(options)
     // 处理 sass 文件
     require('./tasks/sass')(options)
+    // 处理 js
+    require('./tasks/javascript')(options)
     // 处理 js (babel es6)
     require('./tasks/babel')(options)
 }
