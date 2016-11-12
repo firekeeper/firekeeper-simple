@@ -6,7 +6,8 @@ module.exports = () => {
             'html',
             'pug',
             'css',
-            'less'
+            'less',
+            'sass'
         ])
     })
 }

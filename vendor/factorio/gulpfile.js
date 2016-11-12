@@ -38,6 +38,13 @@ module.exports = (root) => {
             release: `${release}/resource/style`,
             extname: '.less'
         },
+        sass: {
+            dir: `${resource}/style`,
+            files: `${resource}/style/**/*.{sass,scss}`,
+            globs: `${resource}/style/**/*.{sass,scss}`,
+            release: `${release}/resource/style`,
+            extname: '.{sass,scss}'
+        },
         htmlBeautify: {
             // 设置缩进宽度
             indent_size: 4,
@@ -78,4 +85,6 @@ module.exports = (root) => {
     require('./tasks/css')(options)
     // 处理 less 文件
     require('./tasks/less')(options)
+    // 处理 sass 文件
+    require('./tasks/sass')(options)
 }
