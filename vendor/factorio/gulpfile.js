@@ -76,6 +76,11 @@ module.exports = (root) => {
             globs: `${resource}/vendor/**/*.*`,
             release: `${release}/resource/vendor`
         },
+        zip: {
+            // globs: [`${root}/app/**/*`, `${root}/vendor/**/*`, `${root}/.gitignore`, `${root}/gulpfile.js`, `${root}/package.json`, `${root}/README.md`],
+            globs: [`${root}/**/*`, `${root}/.gitignore`, `!${root}/release`, `!${root}/node_modules/**/*`, `!${root}/.idea/**/*`],
+            release: `${root}`
+        },
         htmlBeautify: {
             // 设置缩进宽度
             indent_size: 4,
@@ -104,6 +109,9 @@ module.exports = (root) => {
     require('./tasks/clean')(options)
     // 打包文件
     require('./tasks/release')(options)
+
+    // 归档项目
+    require('./tasks/zip')(options)
 
     // 静态服务器
     require('./tasks/serve')(options)
