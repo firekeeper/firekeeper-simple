@@ -8,6 +8,7 @@ module.exports = () => {
         'watch:less',
         'watch:sass',
         'watch:javascript',
-        'watch:babel'
+        'watch:babel',
+        'watch:image'
     ])
 }

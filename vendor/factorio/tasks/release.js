@@ -9,7 +9,8 @@ module.exports = () => {
             'less',
             'sass',
             'javascript',
-            'babel'
+            'babel',
+            'image'
         ])
     })
 }

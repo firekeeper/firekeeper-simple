@@ -52,6 +52,12 @@ module.exports = (root) => {
             globs: [`${resource}/script/**/*.es6.js`, `!${resource}/script/**/_*.es6.js`],
             release: `${release}/resource/script`
         },
+        image: {
+            dir: `${resource}/image`,
+            files: `${resource}/image/**/*.{jpg,png,gif,svg,ico}`,
+            globs: [`${resource}/image/**/*.{jpg,png,gif,svg,ico}`, `${resource}/image/**/_*.{jpg,png,gif,svg,ico}`],
+            release: `${release}/resource/image`
+        },
         htmlBeautify: {
             // 设置缩进宽度
             indent_size: 4,
@@ -98,4 +104,6 @@ module.exports = (root) => {
     require('./tasks/javascript')(options)
     // 处理 js (babel es6)
     require('./tasks/babel')(options)
+    // 处理 jpg png svg gif ico 等图片文件
+    require('./tasks/image')(options)
 }
