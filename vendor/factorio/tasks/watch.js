@@ -11,6 +11,7 @@ module.exports = () => {
         'watch:babel',
         'watch:image',
         'watch:font',
-        'watch:media'
+        'watch:media',
+        'watch:vendor'
     ])
 }

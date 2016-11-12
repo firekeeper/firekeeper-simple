@@ -70,6 +70,12 @@ module.exports = (root) => {
             globs: [`${resource}/media/**/*.{mp3,mp4}`, `!${resource}/media/**/_*.{mp3,mp4}`],
             release: `${release}/resource/media`
         },
+        vendor: {
+            dir: `${resource}/vendor`,
+            files: `${resource}/vendor/**/*.*`,
+            globs: `${resource}/vendor/**/*.*`,
+            release: `${release}/resource/vendor`
+        },
         htmlBeautify: {
             // 设置缩进宽度
             indent_size: 4,
@@ -122,4 +128,6 @@ module.exports = (root) => {
     require('./tasks/font')(options)
     // 处理 mp3 mp4 等媒体文件
     require('./tasks/media')(options)
+    // 处理 vendor 目录
+    require('./tasks/vendor')(options)
 }

@@ -12,7 +12,8 @@ module.exports = () => {
             'babel',
             'image',
             'font',
-            'media'
+            'media',
+            'vendor'
         ])
     })
 }
