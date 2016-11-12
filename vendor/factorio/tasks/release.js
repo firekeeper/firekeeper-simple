@@ -11,7 +11,8 @@ module.exports = () => {
             'javascript',
             'babel',
             'image',
-            'font'
+            'font',
+            'media'
         ])
     })
 }

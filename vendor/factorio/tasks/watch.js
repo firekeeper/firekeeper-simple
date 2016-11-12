@@ -10,6 +10,7 @@ module.exports = () => {
         'watch:javascript',
         'watch:babel',
         'watch:image',
-        'watch:font'
+        'watch:font',
+        'watch:media'
     ])
 }

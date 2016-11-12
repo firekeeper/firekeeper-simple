@@ -55,7 +55,7 @@ module.exports = (root) => {
         image: {
             dir: `${resource}/image`,
             files: `${resource}/image/**/*.{jpg,png,gif,svg,ico}`,
-            globs: [`${resource}/image/**/*.{jpg,png,gif,svg,ico}`, `${resource}/image/**/_*.{jpg,png,gif,svg,ico}`],
+            globs: [`${resource}/image/**/*.{jpg,png,gif,svg,ico}`, `!${resource}/image/**/_*.{jpg,png,gif,svg,ico}`],
             release: `${release}/resource/image`
         },
         font: {
@@ -63,6 +63,12 @@ module.exports = (root) => {
             files: `${resource}/font/**/*.{svg,ttf,woff,eot,otf}`,
             globs: `${resource}/font/**/*.{svg,ttf,woff,eot,otf}`,
             release: `${release}/resource/font`
+        },
+        media: {
+            dir: `${resource}/media`,
+            files: `${resource}/media/**/*.{mp3,mp4}`,
+            globs: [`${resource}/media/**/*.{mp3,mp4}`, `!${resource}/media/**/_*.{mp3,mp4}`],
+            release: `${release}/resource/media`
         },
         htmlBeautify: {
             // 设置缩进宽度
@@ -114,4 +120,6 @@ module.exports = (root) => {
     require('./tasks/image')(options)
     // 处理 svg ttf eot woff 等字体文件
     require('./tasks/font')(options)
+    // 处理 mp3 mp4 等媒体文件
+    require('./tasks/media')(options)
 }
