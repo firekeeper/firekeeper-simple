@@ -1,8 +1,8 @@
-const gulp = require('gulp')
-
 module.exports = (root) => {
     // 开发目录
     const dev = `${root}/app`
+    // 资源目录
+    const resource = `${dev}/resource`
     // 发布目录
     const release = `${root}/release`
     // 配置
@@ -14,13 +14,22 @@ module.exports = (root) => {
             dir: `${dev}/view`,
             files: `${dev}/view/**/*.html`,
             globs: [`${dev}/view/**/*.html`, `!${dev}/view/**/_*.html`],
-            release: `${release}/view`
+            release: `${release}/view`,
+            extname: '.html'
         },
         pug: {
             dir: `${dev}/view`,
             files: `${dev}/view/**/*.pug`,
             globs: [`${dev}/view/**/*.pug`, `!${dev}/view/**/_*.html`],
-            release: `${release}/view`
+            release: `${release}/view`,
+            extname: '.pug'
+        },
+        css: {
+            dir: `${resource}/style`,
+            files: `${resource}/style/**/*.css`,
+            globs: [`${resource}/style/**/*.css`, `!${resource}/style/**/_*.css`],
+            release: `${release}/resource/style`,
+            extname: '.css'
         },
         htmlBeautify: {
             // 设置缩进宽度
@@ -58,4 +67,6 @@ module.exports = (root) => {
     require('./tasks/html')(options)
     // 处理 pug 文件
     require('./tasks/pug')(options)
+    // 处理 css 文件
+    require('./tasks/css')(options)
 }

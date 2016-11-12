@@ -12,7 +12,7 @@ module.exports = (options) => {
             .pipe(changed(options.html.release))
             .pipe(plumber())
             .pipe(logger({
-                dest: options.html.files,
+                dest: `${options.release}/view`,
                 extname: '.html',
                 showChange: true
             }))

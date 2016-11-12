@@ -13,7 +13,7 @@ module.exports = (options) => {
             .pipe(changed(options.pug.release))
             .pipe(plumber())
             .pipe(logger({
-                dest: options.pug.files,
+                dest: `${options.release}/view`,
                 extname: '.pug',
                 showChange: true
             }))
