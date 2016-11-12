@@ -58,6 +58,12 @@ module.exports = (root) => {
             globs: [`${resource}/image/**/*.{jpg,png,gif,svg,ico}`, `${resource}/image/**/_*.{jpg,png,gif,svg,ico}`],
             release: `${release}/resource/image`
         },
+        font: {
+            dir: `${resource}/font`,
+            files: `${resource}/font/**/*.{svg,ttf,woff,eot,otf}`,
+            globs: `${resource}/font/**/*.{svg,ttf,woff,eot,otf}`,
+            release: `${release}/resource/font`
+        },
         htmlBeautify: {
             // 设置缩进宽度
             indent_size: 4,
@@ -106,4 +112,6 @@ module.exports = (root) => {
     require('./tasks/babel')(options)
     // 处理 jpg png svg gif ico 等图片文件
     require('./tasks/image')(options)
+    // 处理 svg ttf eot woff 等字体文件
+    require('./tasks/font')(options)
 }

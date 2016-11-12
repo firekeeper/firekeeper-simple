@@ -9,6 +9,7 @@ module.exports = () => {
         'watch:sass',
         'watch:javascript',
         'watch:babel',
-        'watch:image'
+        'watch:image',
+        'watch:font'
     ])
 }

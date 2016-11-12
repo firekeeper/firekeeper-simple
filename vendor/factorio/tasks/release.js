@@ -10,7 +10,8 @@ module.exports = () => {
             'sass',
             'javascript',
             'babel',
-            'image'
+            'image',
+            'font'
         ])
     })
 }
