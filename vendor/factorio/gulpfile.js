@@ -19,7 +19,7 @@ module.exports = (root) => {
         pug: {
             dir: `${dev}/view`,
             files: `${dev}/view/**/*.pug`,
-            globs: [`${dev}/view/**/*.pug`, `!${dev}/view/**/_*.html`],
+            globs: [`${dev}/view/**/*.pug`, `!${dev}/view/**/_*.pug`],
             release: `${release}/view`
         },
         css: {
