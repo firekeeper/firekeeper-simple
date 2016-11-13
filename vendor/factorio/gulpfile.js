@@ -76,9 +76,8 @@ module.exports = (root) => {
             globs: `${resource}/vendor/**/*.*`,
             release: `${release}/resource/vendor`
         },
-        zip: {
-            // globs: [`${root}/app/**/*`, `${root}/vendor/**/*`, `${root}/.gitignore`, `${root}/gulpfile.js`, `${root}/package.json`, `${root}/README.md`],
-            globs: [`${root}/**/*`, `${root}/.gitignore`, `!${root}/release`, `!${root}/node_modules/**/*`, `!${root}/.idea/**/*`],
+        archive: {
+            globs: [`${root}/{app,vendor}/**/*`, `${root}/{.gitignore,gulpfile\.js,package\.json,README\.md}`],
             release: `${root}`
         },
         htmlBeautify: {
@@ -111,7 +110,7 @@ module.exports = (root) => {
     require('./tasks/release')(options)
 
     // 归档项目
-    require('./tasks/zip')(options)
+    require('./tasks/archive')(options)
 
     // 静态服务器
     require('./tasks/serve')(options)
