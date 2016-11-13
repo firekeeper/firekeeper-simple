@@ -2,7 +2,8 @@ const gulp = require('gulp'),
     browserSync = require('browser-sync').create(),
     serveIndex = require('serve-index'),
     connectLogger = require('connect-logger'),
-    connectHistoryApiFallback = require('connect-history-api-fallback')
+    connectHistoryApiFallback = require('connect-history-api-fallback'),
+    mockMiddleware = require('../mock/mock-middleware')
 
 module.exports = (options) => {
     gulp.task('serve', () => {
@@ -25,6 +26,7 @@ module.exports = (options) => {
                 baseDir: options.release
             },
             middleware: [
+                mockMiddleware(),
                 // 实现浏览器展示文件目录
                 serveIndex(options.release, {
                     icons: true
