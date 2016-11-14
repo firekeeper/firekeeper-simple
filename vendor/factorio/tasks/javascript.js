@@ -4,7 +4,8 @@ const gulp = require('gulp'),
     changed = require('gulp-changed'),
     plumber = require('gulp-plumber'),
     sourcemaps = require('gulp-sourcemaps'),
-    uglify = require('gulp-uglify')
+    uglify = require('gulp-uglify'),
+    mode = require('gulp-mode')()
 
 module.exports = (options) => {
     gulp.task('javascript', () => {
@@ -16,9 +17,9 @@ module.exports = (options) => {
                 extname: '.js',
                 showChange: true
             }))
-            .pipe(sourcemaps.init())
-            .pipe(uglify())
-            .pipe(sourcemaps.write())
+            .pipe(mode['development'](sourcemaps.init()))
+            .pipe(mode['production'](uglify()))
+            .pipe(mode['development'](sourcemaps.write()))
             .pipe(gulp.dest(options.javascript.release))
     })
 

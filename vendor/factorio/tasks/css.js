@@ -5,7 +5,8 @@ const gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     cssnano = require('gulp-cssnano'),
     plumber = require('gulp-plumber'),
-    logger = require('gulp-logger')
+    logger = require('gulp-logger'),
+    mode = require('gulp-mode')()
 
 module.exports = (options) => {
     gulp.task('css', () => {
@@ -17,10 +18,10 @@ module.exports = (options) => {
                 extname: '.css',
                 showChange: true
             }))
-            .pipe(sourcemaps.init())
+            .pipe(mode['development'](sourcemaps.init()))
             .pipe(autoprefixer())
-            .pipe(cssnano())
-            .pipe(sourcemaps.write())
+            .pipe(mode['production'](cssnano()))
+            .pipe(mode['development'](sourcemaps.write()))
             .pipe(gulp.dest(options.css.release))
     })
 

@@ -6,7 +6,8 @@ const gulp = require('gulp'),
     cssnano = require('gulp-cssnano'),
     plumber = require('gulp-plumber'),
     logger = require('gulp-logger'),
-    less = require('gulp-less')
+    less = require('gulp-less'),
+    mode = require('gulp-mode')()
 
 module.exports = (options) => {
     gulp.task('less', () => {
@@ -18,11 +19,11 @@ module.exports = (options) => {
                 extname: '.css',
                 showChange: true
             }))
-            .pipe(sourcemaps.init())
+            .pipe(mode['development'](sourcemaps.init()))
             .pipe(less())
             .pipe(autoprefixer())
-            .pipe(cssnano())
-            .pipe(sourcemaps.write())
+            .pipe(mode['production'](cssnano()))
+            .pipe(mode['development'](sourcemaps.write()))
             .pipe(gulp.dest(options.less.release))
     })
 
