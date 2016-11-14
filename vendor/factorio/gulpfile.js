@@ -100,9 +100,6 @@ module.exports = (root) => {
             html5: true
         }
     }
-    // 帮助信息
-    require('./tasks/help')(options)
-
     // 默认任务
     require('./tasks/default')(options)
     // 监听文件变化
@@ -111,8 +108,10 @@ module.exports = (root) => {
     require('./tasks/clean')(options)
     // 打包文件
     require('./tasks/release')(options)
+
     // 归档项目
     require('./tasks/archive')(options)
+
     // 静态服务器
     require('./tasks/serve')(options)
 

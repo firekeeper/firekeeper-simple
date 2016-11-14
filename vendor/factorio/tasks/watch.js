@@ -13,5 +13,5 @@ module.exports = () => {
         'watch:font',
         'watch:media',
         'watch:vendor'
-    ]).help = '监听文件变化自动执行任务'
+    ])
 }

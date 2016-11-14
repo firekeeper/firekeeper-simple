@@ -15,5 +15,5 @@ module.exports = () => {
             'media',
             'vendor'
         ])
-    }).help = '执行所有编译任务'
+    })
 }

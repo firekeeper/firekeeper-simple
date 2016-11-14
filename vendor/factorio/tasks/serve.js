@@ -44,5 +44,5 @@ module.exports = (options) => {
                 }
             }
         })
-    }).help = '开启静态服务器'
+    })
 }
