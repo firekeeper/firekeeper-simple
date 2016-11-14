@@ -15,5 +15,9 @@ module.exports = () => {
             'media',
             'vendor'
         ])
-    })
+    }).help = {
+        '': '执行所有编译任务',
+        '--development': '设置为开发环境',
+        '--production': '设置为生产环境'
+    }
 }

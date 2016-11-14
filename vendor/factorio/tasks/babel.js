@@ -5,7 +5,8 @@ const gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     sourcemaps = require('gulp-sourcemaps'),
     babel = require('gulp-babel'),
-    uglify = require('gulp-uglify')
+    uglify = require('gulp-uglify'),
+    mode = require('gulp-mode')()
 
 module.exports = (options) => {
     gulp.task('babel', () => {
@@ -17,12 +18,12 @@ module.exports = (options) => {
                 extname: '.js',
                 showChange: true
             }))
-            .pipe(sourcemaps.init())
+            .pipe(mode['development'](sourcemaps.init()))
             .pipe(babel({
                 presets: ['es2015', 'stage-1']
             }))
-            .pipe(uglify())
-            .pipe(sourcemaps.write())
+            .pipe(mode['production'](uglify()))
+            .pipe(mode['development'](sourcemaps.write()))
             .pipe(gulp.dest(options.babel.release))
     })
 

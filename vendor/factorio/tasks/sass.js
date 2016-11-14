@@ -6,7 +6,8 @@ const gulp = require('gulp'),
     cssnano = require('gulp-cssnano'),
     plumber = require('gulp-plumber'),
     logger = require('gulp-logger'),
-    sass = require('gulp-sass')
+    sass = require('gulp-sass'),
+    mode = require('gulp-mode')()
 
 module.exports = (options) => {
     gulp.task('sass', () => {
@@ -18,7 +19,7 @@ module.exports = (options) => {
                 extname: '.css',
                 showChange: true
             }))
-            .pipe(sourcemaps.init())
+            .pipe(mode['development'](sourcemaps.init()))
             .pipe(sass({
                 // 输出的代码格式
                 outputStyle: 'expanded',
@@ -26,8 +27,8 @@ module.exports = (options) => {
                 indentWidth: 4
             }))
             .pipe(autoprefixer())
-            .pipe(cssnano())
-            .pipe(sourcemaps.write())
+            .pipe(mode['production'](cssnano()))
+            .pipe(mode['development'](sourcemaps.write()))
             .pipe(gulp.dest(options.sass.release))
     })
 
