@@ -19,7 +19,12 @@ module.exports = (options) => {
                 showChange: true
             }))
             .pipe(sourcemaps.init())
-            .pipe(sass())
+            .pipe(sass({
+                // 输出的代码格式
+                outputStyle: 'expanded',
+                // 输出的代码缩进宽度
+                indentWidth: 4
+            }))
             .pipe(autoprefixer())
             .pipe(cssnano())
             .pipe(sourcemaps.write())
