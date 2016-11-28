@@ -37,7 +37,8 @@ module.exports = (root) => {
         sass: {
             dir: `${resource}/style`,
             files: `${resource}/style/**/*.{sass,scss}`,
-            globs: `${resource}/style/**/*.{sass,scss}`,
+            globs: [`${resource}/style/**/*.{sass,scss}`, `!${resource}/style/bundle/**/*.{sass,scss}`],
+            concats: [`${resource}/style/bundle/**/*.{sass,scss}`, `!${resource}/style/bundle/**/_*.{sass,scss}`],
             release: `${release}/resource/style`
         },
         javascript: {
