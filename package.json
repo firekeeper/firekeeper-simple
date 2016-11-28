@@ -1,6 +1,6 @@
 {
   "name": "firekeeper-simple",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "firekeeper-simple",
   "main": "index.js",
   "scripts": {
