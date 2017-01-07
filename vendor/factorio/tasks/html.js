@@ -1,6 +1,5 @@
 const gulp = require('gulp'),
     watch = require('gulp-watch'),
-    logger = require('gulp-logger'),
     plumber = require('gulp-plumber'),
     changed = require('gulp-changed'),
     htmlBeautify = require('gulp-html-beautify'),
@@ -11,11 +10,6 @@ module.exports = (options) => {
         return gulp.src(options.html.globs)
             .pipe(changed(options.html.release))
             .pipe(plumber())
-            .pipe(logger({
-                dest: `${options.release}/view`,
-                extname: '.html',
-                showChange: true
-            }))
             .pipe(htmlBeautify(options.htmlBeautify))
             .pipe(htmlmin(options.htmlmin))
             .pipe(gulp.dest(options.html.release))

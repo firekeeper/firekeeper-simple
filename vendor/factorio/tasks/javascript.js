@@ -1,6 +1,5 @@
 const gulp = require('gulp'),
     watch = require('gulp-watch'),
-    logger = require('gulp-logger'),
     changed = require('gulp-changed'),
     plumber = require('gulp-plumber'),
     sourcemaps = require('gulp-sourcemaps'),
@@ -12,11 +11,6 @@ module.exports = (options) => {
         return gulp.src(options.javascript.globs)
             .pipe(changed(options.javascript.release))
             .pipe(plumber())
-            .pipe(logger({
-                dest: options.javascript.release,
-                extname: '.js',
-                showChange: true
-            }))
             .pipe(mode['development'](sourcemaps.init()))
             .pipe(mode['production'](uglify()))
             .pipe(mode['development'](sourcemaps.write()))

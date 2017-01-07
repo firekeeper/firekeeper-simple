@@ -37,20 +37,20 @@ module.exports = (root) => {
         sass: {
             dir: `${resource}/style`,
             files: `${resource}/style/**/*.{sass,scss}`,
-            globs: [`${resource}/style/**/*.{sass,scss}`, `!${resource}/style/bundle/**/*.{sass,scss}`],
+            globs: [`${resource}/style/**/*.{sass,scss}`, `!${resource}/style/**/_*.{sass,scss}`, `!${resource}/style/bundle/**/*.{sass,scss}`],
             concats: [`${resource}/style/bundle/**/*.{sass,scss}`, `!${resource}/style/bundle/**/_*.{sass,scss}`],
             release: `${release}/resource/style`
         },
         javascript: {
             dir: `${resource}/script`,
             files: `${resource}/script/**/*.js`,
-            globs: [`${resource}/script/**/*.js`, `!${resource}/script/**/_*.js`, `!${resource}/script/**/*.es6.js`],
+            globs: [`${resource}/script/**/*.js`, `!${resource}/script/**/_*.js`, `!${resource}/script/**/*.babel.js`],
             release: `${release}/resource/script`
         },
         babel: {
             dir: `${resource}/script`,
-            files: `${resource}/script/**/*.es6.js`,
-            globs: [`${resource}/script/**/*.es6.js`, `!${resource}/script/**/_*.es6.js`],
+            files: `${resource}/script/**/*.babel.js`,
+            globs: [`${resource}/script/**/*.babel.js`, `!${resource}/script/**/_*.babel.js`],
             release: `${release}/resource/script`
         },
         image: {

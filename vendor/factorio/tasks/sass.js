@@ -4,8 +4,6 @@ const gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
     cssnano = require('gulp-cssnano'),
-    plumber = require('gulp-plumber'),
-    logger = require('gulp-logger'),
     sass = require('gulp-sass'),
     mode = require('gulp-mode')(),
     concat = require('gulp-concat'),
@@ -13,24 +11,20 @@ const gulp = require('gulp'),
     merge2 = require('merge2')
 
 module.exports = (options) => {
-    gulp.task('sass', () => {
+    gulp.task('sass', ['bundle:sass'], () => {
         return gulp.src(options.sass.globs)
             .pipe(changed(options.sass.release, { extension: '.css' }))
-            .pipe(plumber())
-            .pipe(logger({
-                dest: options.sass.release,
-                extname: '.css',
-                showChange: true
-            }))
             .pipe(mode['development'](sourcemaps.init()))
             .pipe(sass({
                 // 输出的代码格式7
                 outputStyle: 'expanded',
                 // 输出的代码缩进宽度
                 indentWidth: 4
-            }))
+            }).on('error', sass.logError))
             .pipe(autoprefixer())
-            .pipe(mode['production'](cssnano()))
+            .pipe(mode['production'](cssnano({
+                zindex: false
+            })))
             .pipe(mode['development'](sourcemaps.write()))
             .pipe(gulp.dest(options.sass.release))
     })
@@ -50,23 +44,22 @@ module.exports = (options) => {
             }
             const keys = []
             for (let key in filenames) { keys.push(key) }
+            if (keys.length === 0) callback()
             const streams = merge2()
             for (let i = 0, len = keys.length; i < len; i++) {
                 const stream =
                     gulp.src(filenames[keys[i]])
-                        .pipe(plumber())
                         .pipe(mode['development'](sourcemaps.init()))
-                        .pipe(logger({
-                            showChange: true
-                        }))
                         .pipe(sass({
                             // 输出的代码格式
                             outputStyle: 'expanded',
                             // 输出的代码缩进宽度
                             indentWidth: 4
-                        }))
+                        }).on('error', sass.logError))
                         .pipe(autoprefixer())
-                        .pipe(mode['production'](cssnano()))
+                        .pipe(mode['production'](cssnano({
+                            zindex: false
+                        })))
                         .pipe(concat(`${keys[i]}.css`))
                         .pipe(mode['development'](sourcemaps.write()))
                         .pipe(gulp.dest(options.sass.release))

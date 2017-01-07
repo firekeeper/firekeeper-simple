@@ -5,7 +5,6 @@ const gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     cssnano = require('gulp-cssnano'),
     plumber = require('gulp-plumber'),
-    logger = require('gulp-logger'),
     mode = require('gulp-mode')()
 
 module.exports = (options) => {
@@ -13,14 +12,11 @@ module.exports = (options) => {
         return gulp.src(options.css.globs)
             .pipe(changed(options.css.release))
             .pipe(plumber())
-            .pipe(logger({
-                dest: options.css.release,
-                extname: '.css',
-                showChange: true
-            }))
             .pipe(mode['development'](sourcemaps.init()))
             .pipe(autoprefixer())
-            .pipe(mode['production'](cssnano()))
+            .pipe(mode['production'](cssnano({
+                zindex: false
+            })))
             .pipe(mode['development'](sourcemaps.write()))
             .pipe(gulp.dest(options.css.release))
     })
